@@ -1,0 +1,15 @@
+{
+    "partitions": [
+        {
+            "name": "local",
+            "slurmconf": "",
+            "priority_queue": false
+        },
+        {
+            "name": "queue_name_example",
+            "slurmconf": "/path/to/slurm.conf",
+            "priority_queue": false
+        }
+    ],
+    "job_init_command": "source /etc/profile.d/modules.sh"
+}

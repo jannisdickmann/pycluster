@@ -1,0 +1,23 @@
+{
+    "cluster": {
+        "partition": {"default": "local"},
+        "max_memory": "2G",
+        "max_time": "1-00:00:00",
+        "mail": "ALL"
+    },
+    "executable": "/path/to/Genat4executable",
+    "output_directory": "~/output/simulation",
+    "project_name": "{{ identifier }}-{{ phantom }}@{{ energy }}MeV",
+    "array": {
+        "first": 0,
+        "step": {"default": 4},
+        "last": {"default": 356}
+    },
+    "output_subdirectories": ["dose"],
+    "copy_executable": true,
+    "inputfile": "Geant4.mac",
+    "identifier": { "default": "Simulation" },
+    "phantom": { "default": "WaterPhantom" },
+    "num_particles": { "default": "50000" },
+    "energy": 200
+}

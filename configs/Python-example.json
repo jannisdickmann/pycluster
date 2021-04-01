@@ -1,0 +1,19 @@
+{
+    "cluster": {
+        "partition": {"default": "local"},
+        "max_memory": "1G",
+        "max_time": "1-00:00:00",
+        "mail": "ALL"
+    },
+    "executable": "/usr/bin/python3",
+    "output_directory": "~/pycluster",
+    "project_name": "{{identifier}}-CalculatePower{{power}}",
+    "identifier": {"default": "Python-example"},
+    "array": {
+        "first": 0,
+        "step": {"default": 4},
+        "last": {"default": 356}
+    },
+    "inputfile": "Python-example.py",
+    "power": 3
+}

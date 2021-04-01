@@ -1,0 +1,43 @@
+########################################################################
+/control/verbose 0
+/tracking/verbose 0
+/run/verbose 0
+/event/verbose 0
+
+#######################################################################
+# Pass settings to simulation
+/simulation/setOutputPath {{output_directory}}/{{project_name}}
+/simulation/setIterator {{iterator}}  # in example: iterator will be 0, 4, ..., 356
+/simulation/setEnergy {{energy}}
+/simulation/setPhantom {{phantom}}
+
+########################################################################
+# Will use seeds stored in file currentEvent.rndm
+# /random/resetEngineFrom currentEvent.rndm
+# Set random seeds
+/random/setSeeds {{ 9999999 | randomint }} {{ 9999999 | randomint }}
+
+{% if score_dose %}
+########################################################################
+# Apply command based scoring
+# define scoring mesh
+/score/create/boxMesh boxMesh_1
+/score/mesh/boxSize 12.5 3.5 12.5 cm
+/score/mesh/nBin 125 35 125
+/score/mesh/translate/xyz 0 0 0 cm
+
+# define scorers and filters
+/score/quantity/doseDeposit Dose  
+{% endif %}
+
+########################################################################
+# Run
+/run/setCut 0.1 mm
+/run/initialize
+/run/beamOn {{num_particles}}
+
+{% if score_dose %}
+# close scorer and dump to file
+/score/close
+/score/dumpQuantityToFile boxMesh_1 Dose {{output_directory}}/{{project_name}}/dose/Dose_{{iterator}}.txt
+{% endif %}
