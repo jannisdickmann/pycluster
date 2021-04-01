@@ -1,10 +1,10 @@
-# Pycluster
+# PyCluster
 *A python script to efficiently run scripts on a slurm cluster.*
 
 ## General usage
 
 The python script `pycluster.py` assumes that one executable (for example a Geant4 simulation, or Python) needs be
-executed many times, each time with a different input file. Pycluster will do all the repetitive steps for you like
+executed many times, each time with a different input file. PyCluster will do all the repetitive steps for you like
 creating input files and submitting a slurm job array. You will need to define a template for the input files and
 the python script will generate copies of it filling placeholders with variables that you can define in a
 [JSON](https://en.wikipedia.org/wiki/JSON) configuration file.
